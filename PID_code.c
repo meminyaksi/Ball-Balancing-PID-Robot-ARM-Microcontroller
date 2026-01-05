@@ -1,5 +1,5 @@
 #include <MKL25Z4.H>
-#include <stdlib.h>  // atoi fonksiyonu için
+#include <stdlib.h>  // atoi fonksiyonu iÃ§in
 #include <math.h>
 #include <string.h>
 
@@ -21,7 +21,7 @@ static float integralX = 0, integralY = 0;
 static float derivativeX, derivativeY;
 static float outputX, outputY;
 
-// Kamera çözünürlügü (Örnegin 640x480)
+// Kamera Ã§Ã¶zÃ¼nÃ¼rlÃ¼gÃ¼ (Ã–rnegin 640x480)
 static const int camWidth = 640;
 static const int camHeight = 480;
 
@@ -31,7 +31,7 @@ static const int camHeight = 480;
 static const int centerX = camWidth / 2;
 static const int centerY = camHeight / 2;
 
-// Servo açi sinirlari
+// Servo aÃ§i sinirlari
 static const int minServoAngleX = 45;
 static const int maxServoAngleX = 135;
 static const int minServoAngleY = 45;
@@ -53,12 +53,12 @@ int pwm_valueY = 1965;
 
 while (1) {
 	
-memset(buffer, 0, sizeof(buffer));  // buffer içerigini '\0' ile temizle
+memset(buffer, 0, sizeof(buffer));  // buffer iÃ§erigini '\0' ile temizle
 
 UART0_receive_line(buffer, sizeof(buffer));  // "312,250"
 parse_coordinates(buffer, &currentX, &currentY);
 
-// 2. **Normalize et (Pikseli -1 ile 1 arasina dönüstür)**  
+// 2. **Normalize et (Pikseli -1 ile 1 arasina dÃ¶nÃ¼stÃ¼r)**  
 float normX = (currentX - centerX)/(float)centerX;  // -1 ile 1 arasinda  
 float normY = (currentY - centerY)/(float)centerY;    	
 	
@@ -141,7 +141,7 @@ void UART0_receive_line(char* buffer, int max_len) {
 void parse_coordinates(char* buffer, int* x, int* y) {
     char* comma = strchr(buffer, ',');  // ',' konumunu bul
     if (comma) {
-        *comma = '\0';  // stringi ikiye böl
+        *comma = '\0';  // stringi ikiye bÃ¶l
         *x = atoi(buffer);        // ilk kisim x
         *y = atoi(comma + 1);     // ikinci kisim y
     }
